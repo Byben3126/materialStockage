@@ -1,0 +1,24 @@
+{{ form_start(form) }}
+    {{ form_row(form.fistName) }}
+    {{ form_row(form.lastName) }}
+
+    <h3>Select Materials</h3>
+    {% for orderMaterial in form.orderMaterials %}
+        <div>
+            {{ orderMaterial.vars.data.material.getName() }} 
+            {# {{ form_widget(orderMaterial.material) }}  #}
+            
+            {{ form_widget(orderMaterial.quantity) }}
+            {{ orderMaterial.vars.data.material.getAmount() }} disponible
+        </div>
+    {% endfor %}
+
+
+    {% if form_errors(form) %}
+        <div class="form-errors">
+            {{ form_errors(form) }}
+        </div>
+    {% endif %}
+
+    <button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}

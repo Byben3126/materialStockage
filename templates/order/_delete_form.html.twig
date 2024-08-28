@@ -1,0 +1,4 @@
+<form method="post" action="{{ path('app_order_delete', {'id': order.id}) }}" onsubmit="return confirm('Etes vous sur de vouloir remettre tout les articles en stock?');">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ order.id) }}">
+    <button class="btn">Désactiver (Rendre)</button>
+</form>
